@@ -13,8 +13,8 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "role_id")
 	private Integer roleId;
-	
-	@Column(name = "role_name",nullable = false, length=60)
+
+	@Column(name = "role_name", nullable = false, length = 60)
 	private String roleName;
 
 	public Role(Integer roleId, String roleName) {
@@ -43,10 +43,10 @@ public class Role {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Role [roleId=" + roleId + ", roleName=" + roleName + "]";
 	}
-	
+
 }

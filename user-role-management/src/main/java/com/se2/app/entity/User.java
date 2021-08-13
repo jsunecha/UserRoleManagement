@@ -6,39 +6,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tblUser")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private Integer userId;
-	
-	//userId, fullName, email, password, roleId
-	
-	@Column(name = "full_name",nullable = false, length=60)
-	private String fullName;
-	
 
-	@Column(name = "email",nullable = false,length=60)
+	// userId, fullName, email, password, roleId
+
+	@Column(name = "full_name", nullable = false, length = 60)
+	private String fullName;
+
+	@Column(name = "email", nullable = false, length = 60)
 	private String email;
-	
+
 	@Column(name = "password", nullable = false, length = 60)
 	private String password;
-	
-	@Column(name = "role_id")
-	private int roleId;
-	
-	@OneToOne
-	@JoinColumn(name="role_id")
-	private Role role_Name;
-	
+
+//	@Column(name = "role_id")
+//	private int roleId;
+
+	@ManyToOne
+	@JoinColumn(name = "role_id")
+	private Role roleTable;
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", fullName=" + fullName + ", email=" + email + ", password=" + password
-				+ ", roleId=" + roleId + "]";
+				+ "]";
 	}
 
 	public User() {
@@ -52,7 +53,7 @@ public class User {
 		this.fullName = fullName;
 		this.email = email;
 		this.password = password;
-		this.roleId = roleId;
+		//this.roleId = roleId;
 	}
 
 	public Integer getUserId() {
@@ -87,12 +88,12 @@ public class User {
 		this.password = password;
 	}
 
-	public int getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
-	}
+//	public int getRoleId() {
+//		return roleId;
+//	}
+//
+//	public void setRoleId(int roleId) {
+//		this.roleId = roleId;
+//	}
 
 }

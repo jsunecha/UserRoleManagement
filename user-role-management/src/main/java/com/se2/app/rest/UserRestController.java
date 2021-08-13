@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.se2.app.entity.User;
+import com.se2.app.service.UserService;
 import com.se2.app.service.UserServiceImpl;
 
 @RestController
@@ -20,19 +21,20 @@ import com.se2.app.service.UserServiceImpl;
 
 public class UserRestController {
 	// private UserDAO UserDAO;
-	private UserServiceImpl userService;
+	
+	private UserService userService;
 
 	@Autowired
-	public UserRestController(UserServiceImpl theUserService) {
+	public UserRestController(UserService theUserService) {
 		userService = theUserService;
 	}
 
 	/*
-	 * @Autowired public UserRestController(UserDAO theUserDAO) {
-	 * UserDAO = theUserDAO; }
+	 * @Autowired public UserRestController(UserDAO theUserDAO) { UserDAO =
+	 * theUserDAO; }
 	 * 
-	 * @GetMapping("/Users") public List<User> findAll() { return
-	 * UserDAO.findAll(); }
+	 * @GetMapping("/Users") public List<User> findAll() { return UserDAO.findAll();
+	 * }
 	 */
 	// expose "/Users" and return list of Users
 	@GetMapping("/Users")
